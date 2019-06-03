@@ -37,15 +37,13 @@ namespace HellGateBot
     class WebsiteInfo
     {
     public:
-        static std::string getBaseAddress();
-        static std::string findMainPage();
+        static std::string findMainPage(std::string base);
         static std::string xPath(WebsiteInfoXPath type);
         static std::string pattern(WebsiteInfoPatterns type);
         static std::string id(WebsiteInfoIds id);
     private:
         WebsiteInfo();
 
-        inline static const std::string ADDRESS = "http://nikmed.spb.ru";
         inline static const std::string MAIN_PAGE = "/index.html";
 
         // Main page

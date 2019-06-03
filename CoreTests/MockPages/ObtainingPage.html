@@ -1,0 +1,127 @@
+<html>
+<body id="body1" onkeydown="bodyeventkey(event)" onhelp="showInfoImage();return false">
+<div id="allpage">
+
+
+
+
+
+<form id="form1" method="POST" autocomplete="off" action="tcgi1.exe">
+<input type="hidden" name="USER" value="">
+<input id="command" type="hidden" name="COMMAND" value="50">
+<input type="hidden" id="refreshmode" name="REFRESHMODE" value="">
+<input id="codetype" type="hidden" name="CODETYPE" value="">
+<input type="hidden" name="CODEMED" value="пм65.164">
+<input type="hidden" name="DATE" value="04/06/2019">
+<input type="hidden" name="TIME" value="16:48">
+<input type="hidden" name="ADDR1" value="">
+<input type="hidden" name="NRSTR" value="">
+<fieldset>
+<legend>Обязательные данные</legend>
+<input type="hidden" name="SMO" value="">
+<input type="hidden" name="SERPOLIS" value="">
+<input type="hidden" name="NPOLIS" value="">
+<input type="hidden" name="POLISD1" value="">
+<input type="hidden" name="POLISD2" value="">
+<table border="0" width="100%">
+<tbody><tr>
+<td style="width:35%">Фамилия :</td>
+<td><input id="SURNAME" type="text" size="50" maxlength="100" name="SURNAME" value="" title="Введите фамилию" onchange="return validateNew(window,this,'isRus')" class="INFO SVSELECT"></td>
+</tr>
+<tr>
+<td>Имя :</td>
+<td><input id="NAME1" type="text" size="50" maxlength="100" name="NAME1" value="" title="Введите имя" onchange="return validateNew(window,this,'isRus')" class="INFO SVSELECT"></td>
+</tr>
+<tr>
+<td>Отчество :</td>
+<td><input id="NAME2" type="text" size="50" maxlength="100" name="NAME2" value="" title="Введите отчество" onchange="return validateNew(window,this,'isRus')" class="INFO SVSELECT"></td>
+</tr>
+<tr>
+<td>Дата рождения (например 30/11/1960 или 301160):</td>
+<td><input id="DR" type="text" name="DR" size="15" value="" title="Введите  дату рождения в виде например 30/03/1981 или 300381" onchange="return validateNew(window,this,'isDateFormat')" class="INFO SVSELECT"></td>
+</tr>
+</tbody></table>
+</fieldset>
+<fieldset><legend>Информация для связи</legend>
+<table width="100%">
+<tbody><tr>
+<td style="width:50%">Телефон например 7654321,9211234567 или +7(921)1234567 </td>
+<td><input id="TEL" type="tel" size="15" name="TEL" value="" title="Введите контактный телефон в виде 7654321 или +7(921)1234567" onchange="return validateNew(window,this,'isTel')" class="INFO SVSELECT"></td>
+</tr>
+</tbody></table>
+</fieldset>
+<fieldset>
+<legend>Для повышения качества обслуживания Вы можете ввести необязательные данные</legend>
+<table width="100%">
+<tbody><tr>
+<td>Цель посещения :</td>
+<td>
+<select size="1" name="CELVIZIT" class="INFO SVSELECT" title="Введите цель Вашего посещения (например: лечение, получение справки, выписка рецепта или что-либо другое)">
+<option value="По заболеванию">По заболеванию
+</option><option value="Разовое посещение">Разовое посещение
+</option><option value="Проф. цель">Проф. цель
+</option></select>
+</td>
+<td>Место хранения Вашей амб.карты:</td>
+<td>
+<select size="1" name="POINTCART" class="INFO SVSELECT" title="Введите место хранения Вашей амбулаторной карты ( например:в поликлинике, дома или не знаю)">
+<option value="В поликлинике">В поликлинике
+</option><option value="На руках">На руках
+</option><option value="Не знаю">Не знаю
+</option></select>
+</td>
+</tr>
+<tr>
+<td>Примечание (если есть):</td>
+<td colspan="3">
+<input type="text" size="50" name="GALOB" value="" title="Здесь Вы можете ввести, например, Ваши жалобы или  другую информацию " class="INFO SVSELECT">
+</td>
+</tr>
+</tbody></table>
+</fieldset>
+<fieldset width="100%">
+<legend>ОБРАТИТЕ ВНИМАНИЕ!Важная информация!</legend>
+Для записи Вас на прием к врачу система должна передать через
+Интернет Ваши персональные данные. Если Вы с этим согласны, то
+поставьте отметку об этом после данной информации.Только в этом случае появится
+кнопка позволяющая Вам записаться на прием. Если Вы не согласны с передачей
+Ваших данных через Интернет, то Вы можете записаться на прием в регистратуре.
+<table width="100%"><tbody><tr><td>
+<input id="csd" type="CHECKBOX" name="CHKSEND" value="Y" onclick="i=document.getElementById('tablesave');if (this.checked) {i.style.display=''} else {i.style.display='none'}">
+<label for="csd">Согласен на передачу перcональных данных.</label>
+</td></tr></tbody></table>
+</fieldset>
+<table width="100%">
+<tbody><tr>
+<td width="50%"><table id="tablesave" style="display: none;" width="100%"><tbody><tr>
+<td width="40%" style="text-align:center;padding:5px">
+<button type="submit" id="1" class="SM_ACTIVFREE" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Записать в очередь на прием" style="border-radius: 15px; border-color: green; border-width: 3px; text-align: center; font-size: 20px; font-family: arial; color: black; background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(white), to(green)); height: 60px; width: 75%; cursor: auto;" onclick="SaveCookieInfoClient('form1')">
+<span style="text-align:center;font-size:20px;font-family:arial">Записать на прием</span>
+</button>
+</td>
+</tr></tbody></table></td>
+<td width="20%" style="text-align:center;padding:5px">
+<button type="button" id="2" class="SM_ACTIVFREE" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Очистить данные о пациенте" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Green;border-width:3px;text-align:center;font-size:20px;font-family:arial;color:black;background-color:Green;background: -moz-linear-gradient(top,White,Green);background: -ms-linear-gradient(top,White,Green);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Green');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Green));background: -o-linear-gradient(top,White,Green);height:60px;width:95%" onclick="ClearInfoClient('form1')">
+<span style="text-align:center;font-size:20px;font-family:arial">Очистить</span>
+</button>
+</td>
+<td width="20%" style="text-align:center;padding:5px">
+<button type="button" id="3" class="SM_ACTIVFREE" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Взять последние введенные данные о пациенте" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Green;border-width:3px;text-align:center;font-size:20px;font-family:arial;color:black;background-color:Green;background: -moz-linear-gradient(top,White,Green);background: -ms-linear-gradient(top,White,Green);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Green');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Green));background: -o-linear-gradient(top,White,Green);height:60px;width:95%" onclick="ClearInfoClient('form1');LoadCookieInfoClient('form1')">
+<span style="text-align:center;font-size:20px;font-family:arial">Ранее введенный</span>
+</button>
+</td>
+</tr>
+</tbody></table>
+</form>
+<div id="endpart"></div>
+<script>setTimeout("document.getElementById('endpart').scrollIntoView('false')",500)</script>
+<div id="timeworkdebug" style="font-size:xx-small">
+<hr>\\?\C:\sv\SHTTPS\WWW\CGI-BIN\tcgi1.exe  
+22:00:29:065-(initBase:22:00:29:068-22:00:29:070)-(initBase:22:00:29:070-22:00:29:073)
+-22:00:29:073 (8) (sleep:0)
+(Pid:5064  139 KernelTime:46 UserTime:62)
+</div>
+</div>
+
+
+</body></html>

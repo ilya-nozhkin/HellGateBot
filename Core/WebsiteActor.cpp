@@ -25,9 +25,10 @@ namespace HellGateBot
         return "document.getElementById(\"" + id + "\")";
     }
 
-    WebsiteActor::WebsiteActor() : browser()
+    WebsiteActor::WebsiteActor(std::string _address) : browser()
     {
         state = WebsiteActorState::NOT_CONNECTED;
+        address = _address;
     }
 
     WebsiteActor::~WebsiteActor()
@@ -36,7 +37,7 @@ namespace HellGateBot
 
     void WebsiteActor::openMainPage()
     {
-        auto url = WebsiteInfo::findMainPage();
+        auto url = WebsiteInfo::findMainPage(address);
         auto html = browser.loadUrl(url);
         updatePage(html);
 
@@ -128,8 +129,6 @@ namespace HellGateBot
         fillInput(dateOfBirthId, dateOfBirth);
 
         clickById(agreementId);
-
-        browser.printToPdf("/home/kroonk/ticket.pdf");
     }
 
     void WebsiteActor::obtainTicket(std::string outputPdfPath)

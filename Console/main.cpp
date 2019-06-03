@@ -1,17 +1,16 @@
 #include <iostream>
 
 #include "../Core/HellGateBot.h"
-#include <curlpp/cURLpp.hpp>
+#include <QtWebEngine>
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    curlpp::initialize();
+    QApplication app(argc, argv);
+    QtWebEngine::initialize();
 
     HellGateBot::HellGateBot hellGateBot;
-
-    curlpp::terminate();
 
     return 0;
 }

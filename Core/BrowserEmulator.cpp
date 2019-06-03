@@ -1,15 +1,14 @@
 #include "BrowserEmulator.h"
+#include "Utils.h"
 
 #include <QtWebEngine/QtWebEngine>
+#include <QtPrintSupport>
 #include <iostream>
 
 namespace HellGateBot
 {
-    static int __argc = 0;
-
-    BrowserEmulator::BrowserEmulator() : qtApplication(__argc, nullptr), page()
+    BrowserEmulator::BrowserEmulator() : page()
     {
-        QtWebEngine::initialize();
     }
 
     BrowserEmulator::~BrowserEmulator()
@@ -21,6 +20,7 @@ namespace HellGateBot
         QEventLoop loop;
         QObject::connect(&page, &QWebEnginePage::loadFinished,
                          &loop, &QEventLoop::quit);
+
         page.load(QUrl(url.c_str()));
         loop.exec();
 
@@ -70,8 +70,35 @@ namespace HellGateBot
         page.runJavaScript(QString(js.c_str()));
     }
 
-    void BrowserEmulator::printToPdf(std::string outputPath)
+    bool BrowserEmulator::printToPdf(std::string outputPath)
     {
-        page.printToPdf(QString(outputPath.c_str()));
+        QPrinter printer;
+        printer.setOrientation(QPrinter::Portrait);
+        printer.setPaperSize(QPrinter::A4);
+        printer.setFullPage(true);
+        printer.setOutputFormat(QPrinter::PdfFormat);
+        printer.setOutputFileName(QString(outputPath.c_str()));
+        printer.setFromTo(1, 1);
+
+        QEventLoop loop;
+        bool finished = false;
+        bool printed = false;
+
+        page.print(&printer, [&](bool status) {
+                printed = status;
+                finished = true;
+                loop.quit(); });
+
+        if (!finished)
+        {
+            loop.exec();
+        }
+
+        return printed;
+    }
+
+    WebEngineInitializer::WebEngineInitializer()
+    {
+        QtWebEngine::initialize();
     }
 }

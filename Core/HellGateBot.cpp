@@ -30,8 +30,8 @@ namespace HellGateBot
 
                 actor.selectDay(selectedDay.id);
                 auto tickets = actor.getTickets();
-                actor.selectTicket(tickets[0].id);
-                actor.fillObtainingForm(u8"НОЖКИН", u8"ИЛЬЯ", u8"ИГОРЕВИЧ", u8"10/10/1998");
+                //actor.selectTicket(tickets[0].id);
+                //actor.fillObtainingForm(u8"НОЖКИН", u8"ИЛЬЯ", u8"ИГОРЕВИЧ", u8"10/10/1998");
                 //actor.obtainTicket("./ticket.pdf");
                 success = true;
             }
@@ -41,6 +41,7 @@ namespace HellGateBot
             }
             catch(...)
             {
+                std::cout << "Some exception" << endl;
             }
         }
 

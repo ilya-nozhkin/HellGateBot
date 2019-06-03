@@ -2,14 +2,9 @@
 
 namespace HellGateBot
 {
-    std::string WebsiteInfo::getBaseAddress()
+    std::string WebsiteInfo::findMainPage(std::string base)
     {
-        return ADDRESS;
-    }
-
-    std::string WebsiteInfo::findMainPage()
-    {
-        return ADDRESS + MAIN_PAGE;
+        return base + MAIN_PAGE;
     }
 
     std::string WebsiteInfo::xPath(WebsiteInfoXPath type)

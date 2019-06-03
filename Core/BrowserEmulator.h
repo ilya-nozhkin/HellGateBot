@@ -2,9 +2,16 @@
 
 #include <QtWebEngineWidgets/QtWebEngineWidgets>
 #include <QtWidgets/QApplication>
+#include <memory>
 
 namespace HellGateBot
 {
+    class WebEngineInitializer
+    {
+    public:
+        WebEngineInitializer();
+    };
+
     class BrowserEmulator : public QObject
     {
     public:
@@ -14,9 +21,9 @@ namespace HellGateBot
         std::string loadUrl(std::string url);
         std::string executeJsAndLoadPage(std::string js);
         std::string executeJs(std::string js);
-        void printToPdf(std::string outputPath);
+        bool printToPdf(std::string outputPath);
     private:
-        QApplication qtApplication;
+        static std::unique_ptr<QApplication> qtApplication;
         QWebEnginePage page;
     };
 }

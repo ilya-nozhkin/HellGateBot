@@ -26,7 +26,7 @@ namespace HellGateBot
     public:
         //Requires: curlpp::initialize() is called
         //Ensures: state = NOT_CONNECTED
-        WebsiteActor();
+        WebsiteActor(std::string _address = "http://nikmed.spb.ru");
         ~WebsiteActor();
 
         //Requires: state = <ANY>
@@ -77,6 +77,7 @@ namespace HellGateBot
         void clickById(std::string id);
         void fillInput(std::string id, std::string value);
 
+        std::string address;
         BrowserEmulator browser;
         WebsiteActorState state;
         std::unique_ptr<HtmlDocumentWrapper> page;

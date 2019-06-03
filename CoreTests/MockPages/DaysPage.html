@@ -1,0 +1,152 @@
+<html>
+<body id="body1" onkeydown="bodyeventkey(event)" onhelp="showInfoImage();return false">
+<div id="allpage">
+
+
+
+<form id="f1" method="POST" action="tcgi1.exe">
+<input type="hidden" name="USER" value="">
+<input type="hidden" id="command" name="COMMAND" value="30">
+<input type="hidden" name="CODETYPE" value="">
+<input type="hidden" name="CODEMED" value="пм65.164">
+<input type="hidden" name="CODESPEC" value="4">
+<input id="codedate" type="hidden" name="DATE" value="">
+<input type="hidden" name="SELECTUCH" value="">
+<input id="timeend" type="hidden" name="TIMEEND" value="">
+<fieldset><legend>
+Вы можете определить начальное и конечное интересующее Вас время, а также режим просмотра
+</legend>
+<table width="100%">
+<tbody><tr>
+<td>Начальное время:</td>
+<td>
+<input id="TIMESTOPBEGIN" type="TEXT" name="TIMESTOPBEGIN" value="" size="11" class="INFO" onchange="return validateNew(window,this,'isTimeFormat') ">
+<button type="button" class="BUTTONSMALL" style="width:auto" onclick=" 
+var d=new Date();var s='';var s1='';
+s1=d.getHours().toString();if (s1.length==1) {s1='0'+s1};s=s1;
+s1=d.getMinutes().toString();if (s1.length==1) {s1='0'+s1};s=s+':'+s1;
+s1=d.getSeconds().toString();if (s1.length==1) {s1='0'+s1};s=s+':'+s1;
+document.getElementById('TIMESTOPBEGIN').value=s
+ " label="Установить текущее время">...</button>
+</td>
+<td>Конечное время:</td>
+<td>
+<input id="TIMESTOPEND" type="TEXT" name="TIMESTOPEND" value="" size="11" class="INFO" onchange="return validateNew(window,this,'isTimeFormat') ">
+<button type="button" class="BUTTONSMALL" style="width:auto" onclick=" 
+var d=new Date();var s='';var s1='';
+s1=d.getHours().toString();if (s1.length==1) {s1='0'+s1};s=s1;
+s1=d.getMinutes().toString();if (s1.length==1) {s1='0'+s1};s=s+':'+s1;
+s1=d.getSeconds().toString();if (s1.length==1) {s1='0'+s1};s=s+':'+s1;
+document.getElementById('TIMESTOPEND').value=s
+ " label="Установить текущее время">...</button>
+</td>
+<td style="text-align:right">
+</td>
+</tr>
+<tr>
+<td colspan="5">
+<input id="onlyfree" type="CHECKBOX" name="ONLYFREE" value="Y">
+<label for="onlyfree">Показывать только свободные номерки</label>
+</td>
+</tr>
+</tbody></table></fieldset>
+<table width="100%">
+<tbody><tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="submit" id="1" class="SM_ACTIV" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Выбрать дату 04/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Green;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Green;background: -moz-linear-gradient(top,White,Green);background: -ms-linear-gradient(top,White,Green);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Green');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Green));background: -o-linear-gradient(top,White,Green);height:60px;width:75%" onclick="codedate.value='04/06/2019'">
+<span style="text-align:center;font-size:large;font-family:arial">04/06/2019 (Вторник) 15:00-17:48 НОМЕРКОВ: 2</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="10340" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 05/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">05/06/2019 (Среда) 09:00-11:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="12439" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 06/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">06/06/2019 (Четверг) 15:00-17:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="5922" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 07/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">07/06/2019 (Пятница) 09:00-11:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="13565" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 10/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">10/06/2019 (Понедельник) 15:00-17:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="12060" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 11/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">11/06/2019 (Вторник) 09:00-11:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="13367" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 13/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">13/06/2019 (Четверг) 09:00-11:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="18882" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 14/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">14/06/2019 (Пятница) 15:00-17:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="16119" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 17/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">17/06/2019 (Понедельник) 09:00-11:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="13267" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 18/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">18/06/2019 (Вторник) 15:00-17:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="9915" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 19/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">19/06/2019 (Среда) 09:00-11:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="14747" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 20/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">20/06/2019 (Четверг) 15:00-17:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+<tr>
+<td width="90%" style="text-align:center;padding:5px">
+<button type="button" id="5172" class="SM_NOACTIV" disabled="disabled=" ""="" onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='auto'" title="Вы не можете выбрать день 21/06/2019" style="-moz-border-radius:15px;-webkit-border-radius: 15px;border-radius: 15px;-o-border-radius: 15px;border-color:Red;border-width:3px;text-align:center;font-size:large;font-family:arial;color:black;background-color:Red;background: -moz-linear-gradient(top,White,Red);background: -ms-linear-gradient(top,White,Red);filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='White', endColorstr='Red');background: -webkit-gradient(linear, left top, left bottom, from(White), to(Red));background: -o-linear-gradient(top,White,Red);height:60px;width:75%" onclick="">
+<span style="text-align:center;font-size:large;font-family:arial">21/06/2019 (Пятница) 09:00-11:48 НОМЕРКОВ НЕТ</span>
+</button>
+</td>
+</tr>
+</tbody></table>
+</form>
+
+
+</div>
+
+
+</body></html>
