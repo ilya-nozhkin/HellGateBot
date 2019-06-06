@@ -155,6 +155,21 @@ public:
     {
         return std::make_pair(doctorsPageRequested, selectedDoctorType);
     }
+
+    std::pair<bool, std::string> isDaysPageRequested() const
+    {
+        return std::make_pair(daysPageRequested, selectedDoctor);
+    }
+
+    std::pair<bool, std::string> isTicketsPageRequested() const
+    {
+        return std::make_pair(ticketsPageRequested, selectedDay);
+    }
+
+    std::pair<bool, std::string> isObtainingPageRequested() const
+    {
+        return std::make_pair(obtainingPageRequested, selectedTicket);
+    }
 private:
     Response responseHandler(
             const std::string &url,
@@ -183,6 +198,30 @@ private:
             selectedDoctorType = options["CODESPEC"];
             return Response(200, content);
         }
+        if (url == "/cgi-bin/tcgi1.exe" && checkData(data, {{"COMMAND", "20"}}, false))
+        {
+            std::string content = readMockPage("DaysPage.html");
+            auto options = parseData(data);
+            daysPageRequested = true;
+            selectedDoctor = options["CODEMED"];
+            return Response(200, content);
+        }
+        if (url == "/cgi-bin/tcgi1.exe" && checkData(data, {{"COMMAND", "30"}}, false))
+        {
+            std::string content = readMockPage("TicketsPage.html");
+            auto options = parseData(data);
+            ticketsPageRequested = true;
+            selectedDay = options["DATE"];
+            return Response(200, content);
+        }
+        if (url == "/cgi-bin/tcgi1.exe" && checkData(data, {{"COMMAND", "40"}}, false))
+        {
+            std::string content = readMockPage("ObtainingPage.html");
+            auto options = parseData(data);
+            obtainingPageRequested = true;
+            selectedTicket = options["TIME"];
+            return Response(200, content);
+        }
 
         return Response(404, "Not found");
     }
@@ -190,7 +229,13 @@ private:
     bool mainPageRequested;
     bool doctorTypesPageRequested;
     bool doctorsPageRequested;
+    bool daysPageRequested;
+    bool ticketsPageRequested;
+    bool obtainingPageRequested;
     std::string selectedDoctorType;
+    std::string selectedDoctor;
+    std::string selectedDay;
+    std::string selectedTicket;
 };
 
 static httpmock::TestEnvironment<HTTPMock> *environment;
@@ -211,6 +256,27 @@ void openDoctorsPage(HellGateBot::WebsiteActor &websiteActor)
     openDoctorTypesPage(websiteActor);
     auto types = websiteActor.getDoctorTypes();
     websiteActor.selectDoctorType(types[1].id);
+}
+
+void openDaysPage(HellGateBot::WebsiteActor &websiteActor)
+{
+    openDoctorsPage(websiteActor);
+    auto doctors = websiteActor.getDoctors();
+    websiteActor.selectDoctor(doctors[0].id);
+}
+
+void openTicketsPage(HellGateBot::WebsiteActor &websiteActor)
+{
+    openDaysPage(websiteActor);
+    auto days = websiteActor.getDays();
+    websiteActor.selectDay(days[0].id);
+}
+
+void openObtainingPage(HellGateBot::WebsiteActor &websiteActor)
+{
+    openTicketsPage(websiteActor);
+    auto tickets = websiteActor.getTickets();
+    websiteActor.selectDay(tickets[0].id);
 }
 
 TEST(Navigation, OpenMainPage)
@@ -237,6 +303,36 @@ TEST(Navigation, OpenDoctorsPage)
     auto info = environment->getMock().isDoctorsPageRequested();
     ASSERT_TRUE(info.first);
     ASSERT_EQ("4", info.second);
+}
+
+TEST(Navigation, OpenDaysPage)
+{
+    HellGateBot::WebsiteActor websiteActor(MOCK_ADDRESS);
+    openDaysPage(websiteActor);
+
+    auto info = environment->getMock().isDaysPageRequested();
+    ASSERT_TRUE(info.first);
+    ASSERT_EQ("%D0%BF%D0%BC65.164", info.second);
+}
+
+TEST(Navigation, OpenTicketsPage)
+{
+    HellGateBot::WebsiteActor websiteActor(MOCK_ADDRESS);
+    openTicketsPage(websiteActor);
+
+    auto info = environment->getMock().isTicketsPageRequested();
+    ASSERT_TRUE(info.first);
+    ASSERT_EQ("04%2F06%2F2019", info.second);
+}
+
+TEST(Navigation, OpenObtainingPage)
+{
+    HellGateBot::WebsiteActor websiteActor(MOCK_ADDRESS);
+    openObtainingPage(websiteActor);
+
+    auto info = environment->getMock().isObtainingPageRequested();
+    ASSERT_TRUE(info.first);
+    ASSERT_EQ("16%3A36", info.second);
 }
 
 int main(int argc, char *argv[])
