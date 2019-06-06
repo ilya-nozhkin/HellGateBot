@@ -22,7 +22,7 @@ namespace HellGateBot
 
         SimpleTime() = default;
         SimpleTime(int _hours, int _minutes);
-        bool operator <(const SimpleTime &right);
+        bool operator <=(const SimpleTime &right);
     };
 
     std::string replace(std::string source, std::string pattern, std::string with);
@@ -35,4 +35,6 @@ namespace HellGateBot
     private:
         std::string message;
     };
+
+    void log(std::string message);
 }

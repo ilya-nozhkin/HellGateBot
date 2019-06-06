@@ -6,6 +6,8 @@ ELSE()
     set(USE_SYSTEM_CURL YES)
     set(USE_SYSTEM_GTEST ON)
     set(USE_SYSTEM_OPENSSL OFF)
+    set(CMAKE_DEBUG_POSTFIX "")
+    set(CMAKE_DEBUG_POSTFIX "")
     add_subdirectory(httpmockserver)
 ENDIF()
 

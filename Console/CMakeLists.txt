@@ -19,8 +19,8 @@ IF (WIN32)
 	
 	set(LIBXML_LIBRARIES libxml2)
 	set(LIBXMLPP_LIBRARIES xml++)
-	set(ADDITIONAL_LIBRARIES legacy_stdio_definitions iconv Ws2_32)
-	set(CORE_LIB "${CMAKE_CURRENT_LIST_DIR}/../build/bin/Release/Core.lib")
+        set(ADDITIONAL_LIBRARIES legacy_stdio_definitions iconv Ws2_32)
+        set(CORE_LIB "${CMAKE_CURRENT_LIST_DIR}/../build/bin/Release/Core.lib")
 ELSE()
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -std=c++17 -Wno-deprecated-declarations")
 	
@@ -28,7 +28,7 @@ ELSE()
 	
 	find_package(PkgConfig)
 	pkg_check_modules(LIBXML QUIET libxml-2.0)
-	pkg_check_modules(LIBXMLPP QUIET libxml++-2.6)
+        pkg_check_modules(LIBXMLPP QUIET libxml++-2.6)
     set(CORE_LIB "${CMAKE_CURRENT_BINARY_DIR}/../Core/libCore.a")
 ENDIF()
 

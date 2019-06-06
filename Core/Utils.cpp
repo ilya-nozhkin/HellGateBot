@@ -1,5 +1,7 @@
 #include "Utils.h"
 
+#include <iostream>
+
 namespace HellGateBot
 {
     std::string replace(std::string source, std::string pattern, std::string with)
@@ -31,9 +33,9 @@ namespace HellGateBot
         minutes = _minutes;
     }
 
-    bool SimpleTime::operator <(const SimpleTime &right)
+    bool SimpleTime::operator <=(const SimpleTime &right)
     {
-        return hours * 60 + minutes < right.hours * 60 + right.minutes;
+        return hours * 60 + minutes <= right.hours * 60 + right.minutes;
     }
 
     HellGateException::HellGateException(std::string _message)
@@ -46,4 +48,8 @@ namespace HellGateBot
         return message.c_str();
     }
 
+    void log(std::string message)
+    {
+        std::cout << message << std::endl;
+    }
 }
