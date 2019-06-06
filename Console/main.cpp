@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 #include "../Core/HellGateBot.h"
 #include <QtWebEngine>
