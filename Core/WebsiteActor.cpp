@@ -2,8 +2,6 @@
 #include "Configuration.h"
 #include "Utils.h"
 
-#include <curlpp/Options.hpp>
-
 #include <libxml/tree.h>
 #include <libxml/HTMLparser.h>
 

@@ -2,6 +2,30 @@
 
 #include <QtWebEngine>
 
+#include <iostream>
+
+#ifndef read
+int read(int fd, void *buf, int nbyte)
+{
+	return 0;
+}
+
+int write(int fd, const void *buf, int nbyte)
+{
+	return 0;
+}
+
+int close(int fd)
+{
+	return 0;
+}
+
+int _isatty(int a)
+{
+	return 0;
+}
+#endif
+
 #include <gtest/gtest.h>
 #include <httpmockserver/mock_server.h>
 #include <httpmockserver/test_environment.h>

@@ -20,7 +20,7 @@ namespace HellGateBot
 
         std::string loadUrl(std::string url);
         std::string executeJsAndLoadPage(std::string js);
-        std::string executeJs(std::string js);
+        void executeJs(std::string js);
         bool printToPdf(std::string outputPath);
     private:
         static std::unique_ptr<QApplication> qtApplication;

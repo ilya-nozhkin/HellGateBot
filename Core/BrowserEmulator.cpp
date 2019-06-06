@@ -65,7 +65,7 @@ namespace HellGateBot
         return html.toUtf8().toStdString();
     }
 
-    std::string BrowserEmulator::executeJs(std::string js)
+    void BrowserEmulator::executeJs(std::string js)
     {
         page.runJavaScript(QString(js.c_str()));
     }
