@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-#ifndef read
+#ifdef _MSC_VER
 int read(int fd, void *buf, int nbyte)
 {
 	return 0;

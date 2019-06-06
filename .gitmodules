@@ -1,0 +1,3 @@
+[submodule "httpmockserver"]
+	path = httpmockserver
+	url = https://github.com/seznam/httpmockserver

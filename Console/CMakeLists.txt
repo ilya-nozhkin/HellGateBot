@@ -29,7 +29,7 @@ ELSE()
 	find_package(PkgConfig)
 	pkg_check_modules(LIBXML QUIET libxml-2.0)
 	pkg_check_modules(LIBXMLPP QUIET libxml++-2.6)
-	set(CORE_LIB "${CMAKE_CURRENT_LIST_DIR}/../build/bin/Core.lib")
+    set(CORE_LIB "${CMAKE_CURRENT_BINARY_DIR}/../Core/libCore.a")
 ENDIF()
 
 add_executable(${PROJECT_NAME} ${SRC_LIST})

@@ -1,9 +1,22 @@
 project(HellGateBot)
 cmake_minimum_required(VERSION 2.8.11)
 
+IF (WIN32)
+ELSE()
+    set(USE_SYSTEM_CURL YES)
+    set(USE_SYSTEM_GTEST ON)
+    set(USE_SYSTEM_OPENSSL OFF)
+    add_subdirectory(httpmockserver)
+ENDIF()
+
 add_subdirectory(Core)
 add_subdirectory(CoreTests)
 add_subdirectory(Console)
 
-add_dependencies(CoreTests Core)
+IF (WIN32)
+    add_dependencies(CoreTests Core)
+ELSE()
+    add_dependencies(CoreTests Core httpmockserver)
+ENDIF()
+
 add_dependencies(Console Core)

@@ -23,11 +23,8 @@ ELSE()
 	include_directories(${LIBXML_INCLUDE_DIRS} ${LIBXMLPP_INCLUDE_DIRS})
 ENDIF()
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/../build/bin)
-
 include_directories(${Qt5WebEngine_INCLUDE_DIRS} ${Qt5WebEngineWidgets_INCLUDE_DIRS} ${Qt5Core_INCLUDE_DIRS})
 
 file(GLOB SRC_LIST . *.cpp)
 file(GLOB HEADERS_LIST . *.h)
-add_library(${PROJECT_NAME} ${SRC_LIST} ${HEADERS_LIST})
-target_link_libraries(${PROJECT_NAME} curl)
+add_library(${PROJECT_NAME} STATIC ${SRC_LIST} ${HEADERS_LIST})
